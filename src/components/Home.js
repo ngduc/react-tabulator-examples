@@ -1,6 +1,8 @@
 import React from "react";
 import "./styles.css";
 
+import DateEditor from "react-tabulator/lib/editors/DateEditor";
+
 // import "react-tabulator/lib/styles.css"; // default theme
 import "react-tabulator/lib/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
 
@@ -21,7 +23,7 @@ const data = [
     name: "Oli Bob",
     age: "12",
     col: "red",
-    dob: "",
+    dob: "01/01/1980",
     rating: 5,
     passed: true
   },
@@ -30,7 +32,7 @@ const data = [
     name: "Mary May",
     age: "1",
     col: "green",
-    dob: "14/05/1989",
+    dob: "12/05/1989",
     rating: 4,
     passed: true
   },
@@ -39,7 +41,7 @@ const data = [
     name: "Christine Lobowski",
     age: "42",
     col: "green",
-    dob: "22/05/1985",
+    dob: "10/05/1985",
     rating: 4,
     passed: false
   },
@@ -57,7 +59,7 @@ const data = [
     name: "Margret Marmajuke",
     age: "16",
     col: "yellow",
-    dob: "31/01/1999",
+    dob: "07/01/1999",
     rating: 4,
     passed: false
   },
@@ -66,7 +68,7 @@ const data = [
     name: "Van Ng",
     age: "37",
     col: "green",
-    dob: "06/15/1982",
+    dob: "06/10/1982",
     rating: 4,
     passed: true
   },
@@ -75,7 +77,7 @@ const data = [
     name: "Duc Ng",
     age: "37",
     col: "yellow",
-    dob: "10/15/1982",
+    dob: "10/10/1982",
     rating: 4,
     passed: true
   }
@@ -115,7 +117,13 @@ const editableColumns = [
     headerFilter: "select",
     headerFilterParams: { values: colorOptions }
   },
-  { title: "Date Of Birth", field: "dob", align: "center", editor: "input" },
+  {
+    title: "Date Of Birth",
+    field: "dob",
+    align: "center",
+    editor: DateEditor,
+    editorParams: { format: "MM/dd/yyyy" }
+  },
   {
     title: "Rating",
     field: "rating",
