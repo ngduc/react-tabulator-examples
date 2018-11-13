@@ -2,9 +2,10 @@ import React from "react";
 import "./styles.css";
 
 import DateEditor from "react-tabulator/lib/editors/DateEditor";
+import MultiValuesFormatter from "react-tabulator/lib/formatters/MultiValuesFormatter";
 
 // import "react-tabulator/lib/styles.css"; // default theme
-import "react-tabulator/lib/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
+import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
 
 // for React 16.4.x use: import { ReactTabulator }
 import { React15Tabulator } from "react-tabulator"; // for React 15.x
@@ -25,7 +26,8 @@ const data = [
     color: "red",
     dob: "01/01/1980",
     rating: 5,
-    passed: true
+    passed: true,
+    pets: ["cat", "dog"]
   },
   {
     id: 2,
@@ -34,7 +36,8 @@ const data = [
     color: "green",
     dob: "12/05/1989",
     rating: 4,
-    passed: true
+    passed: true,
+    pets: ["cat"]
   },
   {
     id: 3,
@@ -70,7 +73,8 @@ const data = [
     color: "green",
     dob: "06/10/1982",
     rating: 4,
-    passed: true
+    passed: true,
+    pets: ["dog", "fish"]
   },
   {
     id: 7,
@@ -79,7 +83,8 @@ const data = [
     color: "yellow",
     dob: "10/10/1982",
     rating: 4,
-    passed: true
+    passed: true,
+    pets: ["dog"]
   }
 ];
 
@@ -108,7 +113,7 @@ const editableColumns = [
   {
     title: "Favourite Color",
     field: "color",
-    editor: "autocomplete",
+    editor: "select",
     editorParams: {
       allowEmpty: true,
       showListOnEmpty: true,
@@ -123,13 +128,7 @@ const editableColumns = [
     editor: DateEditor,
     editorParams: { format: "MM/dd/yyyy" }
   },
-  {
-    title: "Rating",
-    field: "rating",
-    align: "center",
-    formatter: "star",
-    editor: true
-  },
+  { title: "Pets", field: "pets", formatter: MultiValuesFormatter },
   {
     title: "Passed?",
     field: "passed",
