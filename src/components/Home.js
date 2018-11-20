@@ -2,9 +2,10 @@ import React from "react";
 import "./styles.css";
 
 import DateEditor from "react-tabulator/lib/editors/DateEditor";
-import MultiValuesFormatter from "react-tabulator/lib/formatters/MultiValuesFormatter";
+import MultiValueFormatter from "react-tabulator/lib/formatters/MultiValueFormatter";
+import MultiSelectEditor from "react-tabulator/lib/editors/MultiSelectEditor";
 
-// import "react-tabulator/lib/styles.css"; // default theme
+import "react-tabulator/lib/styles.css"; // default theme
 import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
 
 // for React 16.4.x use: import { ReactTabulator }
@@ -95,6 +96,11 @@ const colorOptions = {
   green: "green",
   yellow: "yellow"
 };
+const petOptions = [
+  { id: "cat", name: "cat" },
+  { id: "dog", name: "dog" },
+  { id: "fish", name: "fish" }
+];
 const editableColumns = [
   {
     title: "Name",
@@ -128,7 +134,14 @@ const editableColumns = [
     editor: DateEditor,
     editorParams: { format: "MM/dd/yyyy" }
   },
-  { title: "Pets", field: "pets", formatter: MultiValuesFormatter },
+  {
+    title: "Pets",
+    field: "pets",
+    editor: MultiSelectEditor,
+    editorParams: { values: petOptions },
+    formatter: MultiValueFormatter,
+    formatterParams: { style: "PILL" }
+  },
   {
     title: "Passed?",
     field: "passed",
