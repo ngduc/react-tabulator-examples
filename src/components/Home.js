@@ -195,7 +195,11 @@ class Home extends React.Component {
         <React15Tabulator columns={columns} data={this.state.data} />
 
         <h3>Editable Table</h3>
-        <React15Tabulator columns={editableColumns} data={data} />
+        <React15Tabulator
+          columns={editableColumns}
+          data={data}
+          footerElement={<span>Footer</span>}
+        />
 
         <p>
           <a href="https://github.com/ngduc/react-tabulator" target="_blank">
