@@ -9,7 +9,12 @@ import "react-tabulator/lib/styles.css"; // default theme
 import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
 
 // for React 16.4.x use: import { ReactTabulator }
-import { React15Tabulator } from "react-tabulator"; // for React 15.x
+import { React15Tabulator, reactFormatter } from "react-tabulator"; // for React 15.x
+
+function SimpleButton(props: any) {
+  const cellData = props.cell._cell.row.data;
+  return <button onClick={() => alert(cellData.name)}>Show</button>;
+}
 
 const columns = [
   { title: "Name", field: "name", width: 150 },
@@ -17,7 +22,18 @@ const columns = [
   { title: "Favourite Color", field: "color" },
   { title: "Date Of Birth", field: "dob" },
   { title: "Rating", field: "rating", align: "center", formatter: "star" },
-  { title: "Passed?", field: "passed", align: "center", formatter: "tickCross" }
+  {
+    title: "Passed?",
+    field: "passed",
+    align: "center",
+    formatter: "tickCross"
+  },
+  {
+    title: "Custom",
+    field: "custom",
+    align: "center",
+    formatter: reactFormatter(<SimpleButton />)
+  }
 ];
 const data = [
   {
