@@ -8,7 +8,7 @@ import MultiSelectEditor from "react-tabulator/lib/editors/MultiSelectEditor";
 import "react-tabulator/lib/styles.css"; // default theme
 import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
 
-// for React 16.4.x use: import { ReactTabulator }
+// for React 16.4.x use: import { ReactTabulator } - example in github repo.
 import { React15Tabulator, reactFormatter } from "react-tabulator"; // for React 15.x
 
 function SimpleButton(props: any) {
