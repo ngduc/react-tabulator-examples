@@ -8,33 +8,14 @@ import MultiSelectEditor from "react-tabulator/lib/editors/MultiSelectEditor";
 import "react-tabulator/lib/styles.css"; // default theme
 import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
 
-// for React 16.4.x use: import { ReactTabulator }
+// for React 16.4.x use: import { ReactTabulator } - example in github repo.
 import { React15Tabulator, reactFormatter } from "react-tabulator"; // for React 15.x
 
 function SimpleButton(props: any) {
   const cellData = props.cell._cell.row.data;
-  return <button onClick={() => alert(cellData.name)}>Show</button>;
+  return <button onClick={() => props.onSelect(cellData.name)}>Show</button>;
 }
 
-const columns = [
-  { title: "Name", field: "name", width: 150 },
-  { title: "Age", field: "age", align: "left", formatter: "progress" },
-  { title: "Favourite Color", field: "color" },
-  { title: "Date Of Birth", field: "dob" },
-  { title: "Rating", field: "rating", align: "center", formatter: "star" },
-  {
-    title: "Passed?",
-    field: "passed",
-    align: "center",
-    formatter: "tickCross"
-  },
-  {
-    title: "Custom",
-    field: "custom",
-    align: "center",
-    formatter: reactFormatter(<SimpleButton />)
-  }
-];
 const data = [
   {
     id: 1,
@@ -169,13 +150,42 @@ const editableColumns = [
 
 class Home extends React.Component {
   state = {
-    data: []
+    data: [],
+    selectedName: ""
   };
   ref = null;
+
+  columns = [
+    { title: "Name", field: "name", width: 150 },
+    { title: "Age", field: "age", align: "left", formatter: "progress" },
+    { title: "Favourite Color", field: "color" },
+    { title: "Date Of Birth", field: "dob" },
+    { title: "Rating", field: "rating", align: "center", formatter: "star" },
+    {
+      title: "Passed?",
+      field: "passed",
+      align: "center",
+      formatter: "tickCross"
+    },
+    {
+      title: "Custom",
+      field: "custom",
+      align: "center",
+      formatter: reactFormatter(
+        <SimpleButton
+          onSelect={name => {
+            this.setState({ selectedName: name });
+            alert(name);
+          }}
+        />
+      )
+    }
+  ];
 
   rowClick = (e, row) => {
     console.log("ref table: ", this.ref.table); // this is the Tabulator table instance
     console.log("rowClick id: ${row.getData().id}", row, e);
+    this.setState({ selectedName: row.getData().name });
   };
 
   setData = () => {
@@ -195,20 +205,21 @@ class Home extends React.Component {
       <div>
         <React15Tabulator
           ref={ref => (this.ref = ref)}
-          columns={columns}
+          columns={this.columns}
           data={data}
           rowClick={this.rowClick}
           options={options}
           data-custom-attr="test-custom-attribute"
           className="custom-css-class"
         />
+        <div>Selected Name: {this.state.selectedName}</div>
 
         <h3>
           Asynchronous data: (e.g. fetch) -{" "}
           <button onClick={this.setData}>Set Data</button>
           <button onClick={this.clearData}>Clear</button>
         </h3>
-        <React15Tabulator columns={columns} data={this.state.data} />
+        <React15Tabulator columns={this.columns} data={this.state.data} />
 
         <h3>Editable Table</h3>
         <React15Tabulator
