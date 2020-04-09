@@ -11,7 +11,7 @@ import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme
 // for React 16.4.x use: import { ReactTabulator } - example in github repo.
 import { React15Tabulator, reactFormatter } from "react-tabulator"; // for React 15.x
 
-function SimpleButton(props: any) {
+function SimpleButton(props) {
   const cellData = props.cell._cell.row.data;
   return <button onClick={() => props.onSelect(cellData.name)}>Show</button>;
 }
@@ -128,8 +128,9 @@ const editableColumns = [
   {
     title: "Date Of Birth",
     field: "dob",
+    sorter: "date",
     editor: DateEditor,
-    editorParams: { format: "MM/dd/yyyy" }
+    editorParams: { format: "MM/DD/YYYY" }
   },
   {
     title: "Pets",
