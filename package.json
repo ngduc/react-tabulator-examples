@@ -1,8 +1,8 @@
 {
   "name": "react-tabulator-examples",
   "version": "0.0.94",
-  "description": "",
-  "keywords": ["tabulator", "component", "react"],
+  "description": "https://github.com/ngduc/react-tabulator",
+  "keywords": [],
   "main": "index.js",
   "dependencies": {
     "react": "15.6.2",

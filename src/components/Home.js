@@ -110,7 +110,7 @@ const editableColumns = [
   {
     title: "Age",
     field: "age",
-    align: "left",
+    hozAlign: "left",
     formatter: "progress",
     editor: "progress"
   },
@@ -136,6 +136,7 @@ const editableColumns = [
   {
     title: "Pets",
     field: "pets",
+    sorter: (a, b) => a.toString().localeCompare(b.toString()),
     editor: MultiSelectEditor,
     editorParams: { values: petOptions },
     formatter: MultiValueFormatter,
@@ -144,7 +145,7 @@ const editableColumns = [
   {
     title: "Passed?",
     field: "passed",
-    align: "center",
+    hozAlign: "center",
     formatter: "tickCross",
     editor: true
   }
@@ -159,20 +160,20 @@ class Home extends React.Component {
 
   columns = [
     { title: "Name", field: "name", width: 150 },
-    { title: "Age", field: "age", align: "left", formatter: "progress" },
+    { title: "Age", field: "age", hozAlign: "left", formatter: "progress" },
     { title: "Favourite Color", field: "color" },
     { title: "Date Of Birth", field: "dob" },
-    { title: "Rating", field: "rating", align: "center", formatter: "star" },
+    { title: "Rating", field: "rating", hozAlign: "center", formatter: "star" },
     {
       title: "Passed?",
       field: "passed",
-      align: "center",
+      hozAlign: "center",
       formatter: "tickCross"
     },
     {
       title: "Custom",
       field: "custom",
-      align: "center",
+      hozAlign: "center",
       editor: "input",
       formatter: reactFormatter(
         <SimpleButton
