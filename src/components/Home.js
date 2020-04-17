@@ -89,7 +89,7 @@ const data = [
 
 // Editable Example:
 const colorOptions = {
-  [""]: "&nbsp;",
+  "": "&nbsp;",
   red: "red",
   green: "green",
   yellow: "yellow"
@@ -188,7 +188,7 @@ class Home extends React.Component {
 
   rowClick = (e, row) => {
     console.log("ref table: ", this.ref.table); // this is the Tabulator table instance
-    console.log("rowClick id: ${row.getData().id}", row, e);
+    console.log(`rowClick id: \${row.getData().id}`, row, e);
     this.setState({ selectedName: row.getData().name });
   };
 
@@ -235,6 +235,14 @@ class Home extends React.Component {
         <p>
           <a href="https://github.com/ngduc/react-tabulator" target="_blank">
             Back to: Github Repo: react-tabulator
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://github.com/ngduc/react-tabulator/blob/master/docs/examples.md"
+            target="_blank"
+          >
+            More Codesandbox Examples
           </a>
         </p>
         <p>
