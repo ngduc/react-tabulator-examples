@@ -3,7 +3,7 @@ import "./styles.css";
 
 import DateEditor from "react-tabulator/lib/editors/DateEditor";
 import MultiValueFormatter from "react-tabulator/lib/formatters/MultiValueFormatter";
-import MultiSelectEditor from "react-tabulator/lib/editors/MultiSelectEditor";
+// import MultiSelectEditor from "react-tabulator/lib/editors/MultiSelectEditor";
 
 import "react-tabulator/lib/styles.css"; // default theme
 import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
@@ -137,7 +137,7 @@ const editableColumns = [
     title: "Pets",
     field: "pets",
     sorter: (a, b) => a.toString().localeCompare(b.toString()),
-    editor: MultiSelectEditor,
+    // editor: MultiSelectEditor,
     editorParams: { values: petOptions },
     formatter: MultiValueFormatter,
     formatterParams: { style: "PILL" }
@@ -177,7 +177,7 @@ class Home extends React.Component {
       editor: "input",
       formatter: reactFormatter(
         <SimpleButton
-          onSelect={name => {
+          onSelect={(name) => {
             this.setState({ selectedName: name });
             alert(name);
           }}
@@ -208,7 +208,7 @@ class Home extends React.Component {
     return (
       <div>
         <React15Tabulator
-          ref={ref => (this.ref = ref)}
+          ref={(ref) => (this.ref = ref)}
           columns={this.columns}
           data={data}
           rowClick={this.rowClick}
@@ -216,7 +216,9 @@ class Home extends React.Component {
           data-custom-attr="test-custom-attribute"
           className="custom-css-class"
         />
-        <div>Selected Name: {this.state.selectedName}</div>
+        <i>
+          Selected Name: <strong>{this.state.selectedName}</strong>
+        </i>
 
         <h3>
           Asynchronous data: (e.g. fetch) -{" "}
