@@ -8,8 +8,7 @@ import MultiValueFormatter from "react-tabulator/lib/formatters/MultiValueFormat
 import "react-tabulator/lib/styles.css"; // default theme
 import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
 
-// for React 16.4.x use: import { ReactTabulator } - example in github repo.
-import { React15Tabulator, reactFormatter } from "react-tabulator"; // for React 15.x
+import { ReactTabulator, reactFormatter } from "react-tabulator"; // for React 15.x
 
 function SimpleButton(props) {
   const rowData = props.cell._cell.row.data;
@@ -37,24 +36,6 @@ const data = [
     rating: 4,
     passed: true,
     pets: ["cat"]
-  },
-  {
-    id: 3,
-    name: "Christine Lobowski",
-    age: "42",
-    color: "green",
-    dob: "10/05/1985",
-    rating: 4,
-    passed: false
-  },
-  {
-    id: 4,
-    name: "Brendon Philips",
-    age: "125",
-    color: "red",
-    dob: "01/08/1980",
-    rating: 4.5,
-    passed: true
   },
   {
     id: 5,
@@ -207,7 +188,7 @@ class Home extends React.Component {
     };
     return (
       <div>
-        <React15Tabulator
+        <ReactTabulator
           ref={(ref) => (this.ref = ref)}
           columns={this.columns}
           data={data}
@@ -225,10 +206,10 @@ class Home extends React.Component {
           <button onClick={this.setData}>Set Data</button>
           <button onClick={this.clearData}>Clear</button>
         </h3>
-        <React15Tabulator columns={this.columns} data={this.state.data} />
+        <ReactTabulator columns={this.columns} data={this.state.data} />
 
         <h3>Editable Table</h3>
-        <React15Tabulator
+        <ReactTabulator
           columns={editableColumns}
           data={data}
           footerElement={<span>Footer</span>}
