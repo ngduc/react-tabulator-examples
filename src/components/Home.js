@@ -8,7 +8,7 @@ import MultiValueFormatter from "react-tabulator/lib/formatters/MultiValueFormat
 import "react-tabulator/lib/styles.css"; // default theme
 import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
 
-import { ReactTabulator, reactFormatter } from "react-tabulator"; // for React 15.x
+import { ReactTabulator, reactFormatter } from "react-tabulator";
 
 function SimpleButton(props) {
   const rowData = props.cell._cell.row.data;

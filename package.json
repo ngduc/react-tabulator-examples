@@ -8,7 +8,7 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-router-dom": "5.2.0",
-    "react-tabulator": "0.14.4"
+    "react-tabulator": "0.14.7"
   },
   "devDependencies": {
     "react-scripts": "1.0.0"
